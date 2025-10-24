@@ -13,7 +13,7 @@ API REST desarrollada en .NET 8 con Entity Framework Core para gestionar un ABMC
 ### 1. Crear la Base de Datos
 Ejecutar el script SQL en SQL Server Management Studio:
 ```
-Scripts/CreateDatabase.sql
+Scripts/Creacion_BaseDeDatos_ClientesDB.sql
 ```
 
 Este script:

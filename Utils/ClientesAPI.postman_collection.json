@@ -1,0 +1,148 @@
+{
+  "info": {
+    "name": "Clientes API",
+    "description": "Colección de Postman para la API de Gestión de Clientes",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Clientes",
+      "description": "Endpoints para la gestión de clientes",
+      "item": [
+        {
+          "name": "Obtener todos los clientes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/clientes",
+              "host": ["{{base_url}}"],
+              "path": ["api", "clientes"]
+            },
+            "description": "Obtiene el listado completo de clientes activos"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener cliente por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/clientes/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "clientes", "1"]
+            },
+            "description": "Obtiene los detalles de un cliente específico por su ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar clientes por nombre",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/clientes/search/juan",
+              "host": ["{{base_url}}"],
+              "path": ["api", "clientes", "search", "juan"]
+            },
+            "description": "Busca clientes por nombre o apellido (case insensitive)"
+          },
+          "response": []
+        },
+        {
+          "name": "Crear nuevo cliente",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"nombre\": \"Juan\",\n    \"apellido\": \"Pérez\",\n    \"cuit\": \"20-12345678-9\",\n    \"email\": \"juan.perez@example.com\",\n    \"telefono\": "+5491122334455",\n    \"domicilio\": \"Calle Falsa 123\",\n    \"fechaNacimiento\": \"1990-01-01T00:00:00\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/clientes",
+              "host": ["{{base_url}}"],
+              "path": ["api", "clientes"]
+            },
+            "description": "Crea un nuevo cliente"
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar cliente existente",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": 1,\n    \"nombre\": \"Juan Carlos\",\n    \"apellido\": \"Pérez\",\n    \"cuit\": \"20-12345678-9\",\n    \"email\": \"juan.c.perez@example.com\",\n    \"telefono\": "+5491122334455",\n    \"domicilio\": \"Calle Falsa 123, Piso 2\",\n    \"fechaNacimiento\": \"1990-01-01T00:00:00\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/clientes/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "clientes", "1"]
+            },
+            "description": "Actualiza los datos de un cliente existente"
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar cliente (borrado lógico)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/clientes/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "clientes", "1"]
+            },
+            "description": "Realiza un borrado lógico del cliente (marca como inactivo)"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5001",
+      "type": "string",
+      "description": "URL base de la API"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Aquí puedes agregar scripts que se ejecutarán antes de cada solicitud"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Aquí puedes agregar pruebas que se ejecutarán después de cada respuesta",
+          "pm.test(\"Status code is 200\", function () {",
+          "    pm.response.to.have.status(200);",
+          "});"
+        ]
+      }
+    }
+  ]
+}
